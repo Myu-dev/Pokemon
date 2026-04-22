@@ -1,0 +1,32 @@
+header{
+    background-color: #EF5350;
+    color: white;
+    padding: 16px;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bal{
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: linear-gradient(#e53935 50%, white 50%);
+    border: 2px solid black;
+    position: relative;
+}
+
+.ball::after{
+    content:"";
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:8px;
+    height:8px;
+    background:white;
+    border:2px solid black;
+    border-radius:50%;
+}
