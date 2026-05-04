@@ -7,9 +7,9 @@ startBuutton.addEventListener("click",async()=>{
     <h2>ポケモンクイズ</h2>
     <div id="hint" class="hint">
     <p>No.${pokemon.data.id}</p>
-    <div>
+    </div>
     <input id="guess" placeholder="ポケモン名を入力"></input>
-    <button id+"guess-button">答える<button>
+    <button id+"guess-button">答える</button>
     `
 });
 const hintEl=document.getElementById("hint");
@@ -24,6 +24,7 @@ const hints=[
 const showHints=["0","02","012"];
 let count=0;
 guessButton.addEventListener("click",()=>{
+    count++;
     let hint="";
     for(const i of showHints[count]){
         hint+=hints[i];
