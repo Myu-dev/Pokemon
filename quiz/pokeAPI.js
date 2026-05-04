@@ -9,13 +9,13 @@ class Pokemon{
             flavorText:{}
         }
         for(const obj of species.names){
-            data.name[obj.language.name]=obj.name
+            this.data.name[obj.language.name]=obj.name
         }
         for(const obj of species.genera){
-            data.genera[obj.language.name]=obj.genus
+            this.data.genera[obj.language.name]=obj.genus
         }
         for(const obj of species.flavor_text_entries){
-            data.flavorTexts[obj.language.name][obj.version.name]=obj.flavor_text
+            this.data.flavorTexts[obj.language.name][obj.version.name]=obj.flavor_text
         }
     }
 
