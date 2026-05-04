@@ -36,3 +36,18 @@ header{
     border:2px solid black;
     border-radius:50%;
 }
+
+.button{
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #3b4cca;
+    color: white;
+}
+
+.card{
+    background-color: white;
+    padding: 30px;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
