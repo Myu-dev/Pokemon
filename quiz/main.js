@@ -9,7 +9,7 @@ startBuutton.addEventListener("click",async()=>{
     <p>No.${pokemon.data.id}</p>
     </div>
     <input id="guess" placeholder="ポケモン名を入力"></input>
-    <button id+"guess-button">答える</button>
+    <button id="guess-button">答える</button>
     `
 });
 const hintEl=document.getElementById("hint");
