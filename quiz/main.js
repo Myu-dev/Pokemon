@@ -6,9 +6,27 @@ startBuutton.addEventListener("click",async()=>{
     card.innerHTML=`
     <h2>ポケモンクイズ</h2>
     <div id="hint" class="hint">
-    図鑑番号: No.${pokemon.data.id}
-    </div>
-    <input placeholder="ポケモン名を入力"></input>
-    <button>答える</button>
+    <p>No.${pokemon.data.id}</p>
+    <div>
+    <input id="guess" placeholder="ポケモン名を入力"></input>
+    <button id+"guess-button">答える<button>
     `
+});
+const hintEl=document.getElementById("hint");
+const guess=document.getElementById("guess");
+const guessButton=document.getElementById("guess-button");
+const hints=[
+    `<p>No.${pokemon.data.id}</p>`,
+    `<p>${pokemon.data.genera.ja}</p>`,
+    `<p>${pokemon.data.height/10}m ${pokemon.data.weight/10}kg</p>`,
+
+];
+const showHints=["0","02","012"];
+let count=0;
+guessButton.addEventListener("click",()=>{
+    let hint="";
+    for(const i of showHints[count]){
+        hint+=hints[i];
+    }
+    hintEl.innerHTML=hint;
 })
