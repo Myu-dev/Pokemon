@@ -16,7 +16,7 @@ class Pokemon{
         }
         for(const obj of species.flavor_text_entries){
             if(!this.data.flavorText?.[obj.language.name])this.data.flavorText[obj.language.name]={};
-            this.data.flavorTexts[obj.language.name][obj.version.name]=obj.flavor_text
+            this.data.flavorText[obj.language.name][obj.version.name]=obj.flavor_text
         }
     }
 
