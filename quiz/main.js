@@ -27,7 +27,7 @@ guessButton.addEventListener("click",()=>{
     count++;
     let hint="";
     for(const i of showHints[count]){
-        hint+=hints[i];
+        hint+=hints[Number(i)];
     }
     hintEl.innerHTML=hint;
 })
