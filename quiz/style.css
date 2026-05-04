@@ -43,7 +43,7 @@ main{
     padding: 40px 20px;
 }
 
-.button{
+button{
     padding: 10px;
     border-radius: 8px;
     background-color: #3b4cca;
