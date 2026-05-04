@@ -10,7 +10,7 @@ class Pokemon{
         }
     }
 
-    async getPokemonById(id){
+    static async getPokemonById(id){
         try{
             const pokemonRes=await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
             const pokemon=await pokemonRes.json();
@@ -22,7 +22,7 @@ class Pokemon{
         }
     }
 
-    async getPokemonRandom(min,max){
+    static async getPokemonRandom(min,max){
         if(min>max)[min,max]=[max,min]
         const id=Math.floor(Math.random()*(max-min))+min;
         return await this.getPokemonById(id);
