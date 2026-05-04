@@ -2,11 +2,17 @@ class Pokemon{
     constructor(data, species){
         this.data={
             id:data.id,
-            name:species.name,
+            name:species.language.name,
             height:data.height,
             weight:data.weight,
-            genera:species.genera, //〇〇ポケモン
-            flavorTexts:species.flavor_text_entries
+            genera:{}, //〇〇ポケモン
+            flavorText:{}
+        }
+        for(const obj of species.genera){
+            data.genera[obj.language.name]=obj.genus
+        }
+        for(const obj of species.flavor_text_entries){
+            data.flavorTexts[obj.language.name][obj.version.name]=obj.flavor_text
         }
     }
 
