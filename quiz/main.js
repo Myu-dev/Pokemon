@@ -7,8 +7,8 @@ startBuutton.addEventListener("click",async()=>{
     <h2>ポケモンクイズ</h2>
     <div id="hint" class="hint">
     図鑑番号: No.${pokemon.data.id}
-    <div>
+    </div>
     <input placeholder="ポケモン名を入力"></input>
-    <button>答える<button>
+    <button>答える</button>
     `
 })
