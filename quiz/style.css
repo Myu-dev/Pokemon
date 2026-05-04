@@ -37,6 +37,12 @@ header{
     border-radius:50%;
 }
 
+main{
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
 .button{
     padding: 10px;
     border-radius: 8px;
