@@ -8,7 +8,10 @@ const showHints=["0","02","012"];
 
 const card=document.getElementById("mainContainer");
 const startBuutton=document.getElementById("start");
-startBuutton.addEventListener("click",async()=>{
+startBuutton.addEventListener("click",setQuiz);
+
+async function setQuiz(){
+    count=0;
     const pokemon=await Pokemon.getPokemonRandom(1,152);
     console.log(pokemon.data);
     card.innerHTML=`
@@ -28,6 +31,10 @@ startBuutton.addEventListener("click",async()=>{
     guess=document.getElementById("guess");
     guessButton=document.getElementById("guess-button");
     guessButton.addEventListener("click",()=>{
+        if(guess.value==pokemon.data.name.ja){
+            alert("正解！");
+            return
+        }
         count++;
         let hint="";
         for(const i of showHints[count]){
@@ -36,4 +43,4 @@ startBuutton.addEventListener("click",async()=>{
         }
         hintEl.innerHTML=hint;
     })
-});
+}
