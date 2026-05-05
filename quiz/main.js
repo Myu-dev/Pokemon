@@ -4,7 +4,7 @@ let guess;
 let guessButton
 
 let count=0;
-const showHints=["0","02","012"];
+const showHints=["0","03","013","0123","01234"];
 
 const card=document.getElementById("mainContainer");
 const startBuutton=document.getElementById("start");
@@ -25,7 +25,9 @@ async function setQuiz(){
     hints=[
         `<p>No.${pokemon.data.id}</p>`,
         `<p>${pokemon.data.genera.ja}</p>`,
+        `<p>${pokemon.data.types[0]+(pokemon.data.types?.[1]?`, ${pokemon.data.types[1]}`:"")}タイプ</p>`
         `<p>${pokemon.data.height/10}m ${pokemon.data.weight/10}kg</p>`,
+        `<p>${pokemon.data.flavorText.ja[Object.keys(pokemon.data.flavorText.ja)[0]]}</p>`
     ];
     hintEl=document.getElementById("hint");
     guess=document.getElementById("guess");
