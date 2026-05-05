@@ -1,4 +1,10 @@
 let hints;
+let hintEl;
+let guess;
+let guessButton
+
+let count=0;
+const showHints=["0","02","012"];
 
 const card=document.getElementById("mainContainer");
 const startBuutton=document.getElementById("start");
@@ -18,18 +24,16 @@ startBuutton.addEventListener("click",async()=>{
         `<p>${pokemon.data.genera.ja}</p>`,
         `<p>${pokemon.data.height/10}m ${pokemon.data.weight/10}kg</p>`,
     ];
+    hintEl=document.getElementById("hint");
+    guess=document.getElementById("guess");
+    guessButton=document.getElementById("guess-button");
+    guessButton.addEventListener("click",()=>{
+        count++;
+        let hint="";
+        for(const i of showHints[count]){
+            hint+=hints[Number(i)];
+            console.log(i);
+        }
+        hintEl.innerHTML=hint;
+    })
 });
-const hintEl=document.getElementById("hint");
-const guess=document.getElementById("guess");
-const guessButton=document.getElementById("guess-button");
-const showHints=["0","02","012"];
-let count=0;
-guessButton.addEventListener("click",()=>{
-    count++;
-    let hint="";
-    for(const i of showHints[count]){
-        hint+=hints[Number(i)];
-        console.log(i);
-    }
-    hintEl.innerHTML=hint;
-})
