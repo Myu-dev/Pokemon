@@ -6,6 +6,7 @@ class Pokemon{
             height:data.height,
             weight:data.weight,
             genera:{}, //〇〇ポケモン
+            types:[data.types[0].type.name,data.types?.[1]?.type?.name],
             flavorText:{}
         }
         for(const obj of species.names){
