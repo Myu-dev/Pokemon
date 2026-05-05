@@ -25,7 +25,7 @@ async function setQuiz(){
     hints=[
         `<p>No.${pokemon.data.id}</p>`,
         `<p>${pokemon.data.genera.ja}</p>`,
-        `<p>${pokemon.data.types[0]+(pokemon.data.types?.[1]?`, ${pokemon.data.types[1]}`:"")}タイプ</p>`
+        `<p>${pokemon.data.types.join("・")}タイプ</p>`,
         `<p>${pokemon.data.height/10}m ${pokemon.data.weight/10}kg</p>`,
         `<p>${pokemon.data.flavorText.ja[Object.keys(pokemon.data.flavorText.ja)[0]]}</p>`
     ];
