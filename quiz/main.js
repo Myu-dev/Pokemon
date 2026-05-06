@@ -63,7 +63,7 @@ function handleGuess(){
     state.count++;
     if(state.count>4){
         showAllHints();
-        showOverlay("残念 不正解！","wrong");
+        showOverlay("不正解","wrong");
         return;
     }
     const hint=[...showHints[state.count]].map(i=>state.hints[Number(i)]).join("");
