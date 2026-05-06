@@ -68,5 +68,5 @@ function handleGuess(){
 
 function showAllHints(){
     const hintEl=document.getElementById("hint");
-    hintEl.innerHTML=state.hints.join("");
+    hintEl.innerHTML=`<p>${state.pokemon.data.name.ja}</p>`+state.hints.join("");
 }
