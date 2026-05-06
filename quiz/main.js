@@ -32,17 +32,24 @@ async function setQuiz(){
     hintEl=document.getElementById("hint");
     guess=document.getElementById("guess");
     guessButton=document.getElementById("guess-button");
-    guessButton.addEventListener("click",()=>{
-        if(guess.value==pokemon.data.name.ja){
-            alert("正解！");
-            return
-        }
+    guessButton.addEventListener("click",setHint)
+}
+
+function setHint(c){
+    if(c){
+        count=c;
+    }else{
         count++;
-        let hint="";
-        for(const i of showHints[count]){
-            hint+=hints[Number(i)];
-            console.log(i);
-        }
-        hintEl.innerHTML=hint;
-    })
+    }
+    if(guess.value==pokemon.data.name.ja&&!c){
+        setHint(4);
+        alert("正解！");
+        return
+    }
+    let hint="";
+    for(const i of showHints[count]){
+        hint+=hints[Number(i)];
+        console.log(i);
+    }
+    hintEl.innerHTML=hint;
 }
