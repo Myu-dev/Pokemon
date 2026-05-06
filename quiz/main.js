@@ -21,7 +21,7 @@ async function startGame(){
     const p=state.pokemon.data;
     const flavorText=p.flavorText.ja
     state.hints=[
-        `<p>${p.id}</p>`,
+        `<p>No.${p.id}</p>`,
         `<p>${p.genera?.ja ?? "不明"}</p>`,
         `<div class="center">${p.types.map(t=>`<img src="https://assets.myu-jp.f5.si/img/pokemon/type/${t}.svg" width="30px" height="30px">`).join("")}</div>`,
         `<p>${p.height/10}m ${p.weight/10}kg</p>`,
