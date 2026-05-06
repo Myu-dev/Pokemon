@@ -1,7 +1,8 @@
 let hints;
 let hintEl;
 let guess;
-let guessButton
+let guessButton;
+let pokemon;
 
 let count=0;
 const showHints=["0","03","013","0123","01234"];
@@ -12,7 +13,7 @@ startBuutton.addEventListener("click",setQuiz);
 
 async function setQuiz(){
     count=0;
-    const pokemon=await Pokemon.getPokemonRandom(1,152);
+    pokemon=await Pokemon.getPokemonRandom(1,152);
     console.log(pokemon.data);
     card.innerHTML=`
     <h2>ポケモンクイズ</h2>
