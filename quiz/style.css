@@ -80,6 +80,7 @@ button{
     text-shadow: 0 5px 20px rgba(0,0,0,0.5);
     border-radius: 15px;
     animation: zoom 0.4s ease;
+    pointer-events: none;
 }
 
 .overlay.correct{
