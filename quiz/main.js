@@ -57,6 +57,11 @@ function handleGuess(){
     }
 
     state.count++;
+    if(count>4){
+        showAllHints();
+        alert("残念 不正解！");
+        return;
+    }
     const hint=[...showHints[state.count]].map(i=>state.hints[Number(i)]).join("");
     hintEl.innerHTML=hint;
 }
