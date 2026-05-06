@@ -1,56 +1,67 @@
-let hints;
-let hintEl;
-let guess;
-let guessButton;
-let pokemon;
-
-let count=0;
-const showHints=["0","03","013","0123","01234"];
-
 const card=document.getElementById("mainContainer");
-const startBuutton=document.getElementById("start");
-startBuutton.addEventListener("click",setQuiz);
+const startButton=document.getElementById("start");
 
-async function setQuiz(){
-    count=0;
-    pokemon=await Pokemon.getPokemonRandom(1,152);
-    console.log(pokemon.data);
-    card.innerHTML=`
-    <h2>ポケモンクイズ</h2>
-    <div id="hint" class="hint">
-    <p>No.${pokemon.data.id}</p>
-    </div>
-    <input id="guess" placeholder="ポケモン名を入力"></input>
-    <button id="guess-button">答える</button>
-    `;
-    hints=[
-        `<p>No.${pokemon.data.id}</p>`,
-        `<p>${pokemon.data.genera.ja}</p>`,
-        `<div class="center">${pokemon.data.types.map(t=>`<img src="https://assets.myu-jp.f5.si/img/pokemon/type/${t}.svg" width="30px" height="30px">`).join("")}</div>`,
-        `<p>${pokemon.data.height/10}m ${pokemon.data.weight/10}kg</p>`,
-        `<p>${pokemon.data.flavorText.ja[Object.keys(pokemon.data.flavorText.ja)[0]]}</p>`
+const state={
+    pokemon: null,
+    hints: [],
+    count: 0
+};
+const showHints=["0", "03", "013", "0123", "01234"];
+
+startButton.addEventListener("click",startGame);
+
+card.addEventListener("click",(e)=>{
+    if(e.target.id==="guess-button")handleGuess();
+});
+
+async function startGame(){
+    state.count=0;
+    state.pokemon=await Pokemon.getPokemonRandom(1, 152);
+
+    const p=state.pokemon.data;
+    const flavorText=p.flavorText.ja
+    state.hints=[
+        `<p>${p.id}</p>`,
+        `<p>${p.genera?.ja ?? "不明"}</p>`,
+        `<div class+"ceenter">${p.types.map(t=>`<img src="https://assets.myu-jp.f5.si/img/pokemon/type/${t}.svg" width="30px" height="30px">`).join("")}</div>`,
+        `<p>${p.height/10}m ${p.weight/10}kg</p>`,
+        `<p>${flavorText[Object.keys(flavorText)[0]]}</p>`
     ];
-    hintEl=document.getElementById("hint");
-    guess=document.getElementById("guess");
-    guessButton=document.getElementById("guess-button");
-    guessButton.addEventListener("click",setHint)
+
+    render();
 }
 
-function setHint(c){
-    if(c){
-        count=c;
-    }else{
-        count++;
-    }
-    if(guess.value==pokemon.data.name.ja&&!c){
-        setHint(4);
+function render(){
+    const p=state.pokemon.data;
+
+    card.innerHTML=`
+        <h2>ポケモンクイズ</h2>
+        <div id="hint" class="hint">
+            ${state.hints[0]}
+        </div>
+        <input id="guess" placeholder="ポケモン名を入力">
+        <button id="guess-button">答える</button>
+    `;
+}
+
+function handleGuess(){
+    const guessInput=document.getElementById("guess");
+    const hintEl=document.getElementById("hint");
+
+    const anser=state.pokemon.data.name.ja;
+
+    if(guessInput.value.trim()==="anser"){
+        showAllHints();
         alert("正解！");
-        return
+        return;
     }
-    let hint="";
-    for(const i of showHints[count]){
-        hint+=hints[Number(i)];
-        console.log(i);
-    }
+
+    state.count++;
+    const hint=[...showHints[state.count]].map(i=>state.hints[Number(i)]).join("");
     hintEl.innerHTML=hint;
+}
+
+function showAllHints(){
+    const hintEl=document.getElementById("hint");
+    hintEl.innerHTML=state.hints.join("");
 }
