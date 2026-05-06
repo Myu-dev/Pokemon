@@ -23,7 +23,7 @@ async function startGame(){
     state.hints=[
         `<p>${p.id}</p>`,
         `<p>${p.genera?.ja ?? "不明"}</p>`,
-        `<div class+"ceenter">${p.types.map(t=>`<img src="https://assets.myu-jp.f5.si/img/pokemon/type/${t}.svg" width="30px" height="30px">`).join("")}</div>`,
+        `<div class="center">${p.types.map(t=>`<img src="https://assets.myu-jp.f5.si/img/pokemon/type/${t}.svg" width="30px" height="30px">`).join("")}</div>`,
         `<p>${p.height/10}m ${p.weight/10}kg</p>`,
         `<p>${flavorText[Object.keys(flavorText)[0]]}</p>`
     ];
@@ -50,14 +50,14 @@ function handleGuess(){
 
     const anser=state.pokemon.data.name.ja;
 
-    if(guessInput.value.trim()==="anser"){
+    if(guessInput.value.trim()===anser){
         showAllHints();
         alert("正解！");
         return;
     }
 
     state.count++;
-    if(count>4){
+    if(state.count>4){
         showAllHints();
         alert("残念 不正解！");
         return;
