@@ -25,7 +25,7 @@ async function setQuiz(){
     hints=[
         `<p>No.${pokemon.data.id}</p>`,
         `<p>${pokemon.data.genera.ja}</p>`,
-        `<div class="center">${pokemon.data.types.map(t=>`<img src="https://assets.myu-jp.f5.si/img/pokemon/type/${t}.svg" width="30px" height="30px">`)}</div>`,
+        `<div class="center">${pokemon.data.types.map(t=>`<img src="https://assets.myu-jp.f5.si/img/pokemon/type/${t}.svg" width="30px" height="30px">`).join("")}</div>`,
         `<p>${pokemon.data.height/10}m ${pokemon.data.weight/10}kg</p>`,
         `<p>${pokemon.data.flavorText.ja[Object.keys(pokemon.data.flavorText.ja)[0]]}</p>`
     ];
