@@ -43,7 +43,7 @@ function render(){
         <button id="guess-button">答える</button>
 
         <div id="overlay" class="overlay" hidden>
-            <div id="overlay-text></div>
+            <div id="overlay-text"></div>
         </div>
     `;
 }
