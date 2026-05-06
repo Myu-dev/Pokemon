@@ -41,6 +41,10 @@ function render(){
         </div>
         <input id="guess" placeholder="ポケモン名を入力">
         <button id="guess-button">答える</button>
+
+        <div id="overlay" class="overlay" hidden>
+            <div id="overlay-text></div>
+        </div>
     `;
 }
 
@@ -52,14 +56,14 @@ function handleGuess(){
 
     if(guessInput.value.trim()===anser){
         showAllHints();
-        alert("正解！");
+        showOverlay("正解！", "correct");
         return;
     }
 
     state.count++;
     if(state.count>4){
         showAllHints();
-        alert("残念 不正解！");
+        showOverlay("残念 不正解！","wrong");
         return;
     }
     const hint=[...showHints[state.count]].map(i=>state.hints[Number(i)]).join("");
@@ -69,4 +73,16 @@ function handleGuess(){
 function showAllHints(){
     const hintEl=document.getElementById("hint");
     hintEl.innerHTML=`<p>${state.pokemon.data.name.ja}</p>`+state.hints.join("");
+}
+
+function showOverlay(text, type){
+    const overlay=document.getElementById("overlay");
+    const overlayText=document.getElementById("overlay-text");
+
+    overlay.className="overlay "+type;
+    overlayText.textContent=text;
+
+    setTimeout(()=>{
+        overlay.classList.add("hidden");
+    },2000);
 }
