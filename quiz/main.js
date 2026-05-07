@@ -12,6 +12,7 @@ startButton.addEventListener("click",startGame);
 
 card.addEventListener("click",(e)=>{
     if(e.target.id==="guess-button")handleGuess();
+    if(e.target.id==="next")startGame();
 });
 
 async function startGame(){
@@ -72,7 +73,11 @@ function handleGuess(){
 
 function showAllHints(){
     const hintEl=document.getElementById("hint");
+    const nextButton=document.createElement("button");
     hintEl.innerHTML=`<p>${state.pokemon.data.name.ja}</p>`+state.hints.join("");
+    nextButton.textContent="次の問題";
+    nextButton.id="next";
+    card.appendChild(nextButton);
 }
 
 function showOverlay(text, type){
